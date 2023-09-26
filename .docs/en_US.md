@@ -1,4 +1,4 @@
-RU | [English](./docs/en_US.md)
+[RU](Readme.md) | English
 
 <div align="center">
 <h1>SwissWebApplicationFactory</h1>
@@ -20,8 +20,8 @@ dotnet add package SwissWebApplicationFactory
 
 ## 🔧 Possibilities
 
-### Моки
-SwissWebApplicationFactory предоставляет функциональность заменять сервисы с использованием мок-объектов следующим образом:
+### Mock
+SwissWebApplicationFactory provides the functionality to replace services using mock objects as follows:
 ```csharp
 private readonly IDateTimeProvider DateTimeProviderMock;
 private readonly AbstractExternalService AbstractServiceMock;
@@ -35,8 +35,8 @@ public IEnumerable<object> GetMocks()
 }
 ```
 
-### Удаление сервисов
-Указываем в файле appsettings.json, какие сервисы мы хотим исключить при проведении тестирования:
+### Removing services
+Specify in the appsettings.json file which services we want to exclude during testing:
 ```json
 {
   "RemoveServicesOption": {
@@ -50,7 +50,7 @@ public IEnumerable<object> GetMocks()
 ```csharp
 SwissWebApplicationFactory.RemoveServicesByOption()
 ```
-или через атрибут, если есть доступ к классу или интерфейсу:
+or through an attribute if there is access to the class or interface:
 ```csharp
 [Remove(RemoveOrder.First)]
 public class Tracer : ITracer
@@ -63,36 +63,36 @@ public class Logger : ILogger
 SwissWebApplicationFactory.RemoveServicesByAttribute();
 ```
 
-### База данных
-Для замены существующей базы данных используется следующий метод:
+### Database
+To replace an existing database, you can use the following method:
 ```csharp
 private readonly SqliteConnection memorySqliteConnection;
 
 SwissWebApplicationFactory.AddDbContext<TestableDbContext, Program>(builder => builder.UseSqlite(memorySqliteConnection));
 ```
-Или
+Or
 ```csharp
 private readonly SqliteConnection memorySqliteConnection;
 
 SwissWebApplicationFactory.AddDbContextPool<TestableDbContext, Program>(builder => builder.UseSqlite(memorySqliteConnection));
 ```
-Сущности можно добавить следующим образом:
+Entities can be added in the following way:
 ```csharp
 await SwissWebApplicationFactory.AddEntitiesAsync<TestableDbContext, Program, Item>(items);
 ```
-Или так
+Or
 ```csharp
 await SwissWebApplicationFactory.ManipulateDbContextAsync<TestableDbContext, Program>(static async db =>
 {
     (await db.Items.SingleAsync()).Value = expected;
 });
 ```
-### Аутентификация
-Для замены аутентификации вызываем следующие методы:
+### Authentication
+To replace authentication, you call the following methods:
 ```csharp
 SwissWebApplicationFactory.MockAuth().SetFakeBearerAuthenticationHeader();
 ```
-Если нужно настроить разрешения для пользователя:
+If you need to configure permissions for a user:
 ```csharp
 SwissWebApplicationFactory.ClaimsConfig.Roles = new[]{ "Admin" };
 SwissWebApplicationFactory.ClaimsConfig.Name = "Admin";
