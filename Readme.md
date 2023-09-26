@@ -2,7 +2,7 @@ RU | [English](./docs/en_US.md)
 
 <div align="center">
 <h1>SwissWebApplicationFactory</h1>
-<div>
+</div>
 
 SwissWebApplicationFactory - библиотека расширяющая возможности [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests).
 
