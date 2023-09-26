@@ -5,6 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Description>SwissWebApplicationFactory - library extending the capabilities of WebApplicationFactory</Description>
+	<Copyright>Kataane</Copyright>
+	<PackageProjectUrl>https://github.com/Kataane/SwissWebApplicationFactory</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/Kataane/SwissWebApplicationFactory</RepositoryUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
