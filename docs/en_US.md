@@ -1,4 +1,4 @@
-[RU](Readme.md) | English
+[RU](./Readme.md) | English
 
 <div align="center">
 <h1>SwissWebApplicationFactory</h1>
